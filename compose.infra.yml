@@ -1,0 +1,31 @@
+# rag-example — local development services
+# Usage:
+#   Start:  docker-compose up -d
+#   Stop:   docker-compose down
+#   Logs:   docker-compose logs -f
+
+services:
+
+  redis:
+    image: redis:latest
+    container_name: rag-example-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    restart: unless-stopped
+
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: rag-example-qdrant
+    ports:
+      - "6333:6333"
+    volumes:
+      - qdrant-data:/qdrant/storage
+    restart: unless-stopped
+
+volumes:
+  redis-data:
+    driver: local
+  qdrant-data:
+    driver: local

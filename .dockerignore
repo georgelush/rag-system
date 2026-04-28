@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+.env
+.git/
+.github/
+tests/
+studio/
+scripts/
+*.code-workspace
+compose.yml
+README.md
